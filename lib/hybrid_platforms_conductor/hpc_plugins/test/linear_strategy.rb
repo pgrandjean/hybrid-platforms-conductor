@@ -34,6 +34,7 @@ module HybridPlatformsConductor
               "cd #{@platform.repository_path} && git --no-pager log #{merge_commit_id} --pretty=format:%aI",
               log_to_stdout: log_debug?
             )
+            puts "################## DEBUG #{stdout}"
             error "Git history is not linear because of Merge commit #{merge_commit_id}" if Time.now - Time.parse(stdout.strip) < LOOKING_PERIOD
           end
         end
